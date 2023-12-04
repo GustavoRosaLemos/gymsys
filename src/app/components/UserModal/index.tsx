@@ -103,15 +103,16 @@ function UserModal({ user, opened, close }: UserModalProps) {
   };
 
   const handleClose = () => {
-    reset();
     close();
   };
 
   useEffect(() => {
     if (user) {
       Object.entries(user).forEach((u) => setFieldValue(u[0], u[1]));
+    } else {
+      reset();
     }
-  }, [user, setFieldValue]);
+  }, [user, setFieldValue, reset]);
 
   return (
     <>

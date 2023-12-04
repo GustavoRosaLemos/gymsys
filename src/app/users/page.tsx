@@ -28,7 +28,7 @@ export default function Users() {
       <InitialScale delay={0.1}>
         <UserTable />
       </InitialScale>
-      <UserModal opened={opened} close={close} />
+      <UserModal opened={opened} close={close} user={undefined} />
     </Container>
   );
 }

@@ -5,14 +5,20 @@ import { useUsers, useGetUsers, useDeleteUser } from '@/store/hooks/userHooks';
 import { ActionIcon, Badge, Group, LoadingOverlay } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
 import { USER_STATUS, USER_TYPE } from '@/constant';
-import { IconAdjustments, IconTrash } from '@tabler/icons-react';
+import {
+  IconAdjustments,
+  IconQuestionMark,
+  IconTrash,
+} from '@tabler/icons-react';
 import { useDisclosure } from '@mantine/hooks';
 import { User } from '@/type/user';
 import Table from '../Table';
 import UserModal from '../UserModal';
+import QuestionModal from '../QuestionModal';
 
 export default function UserTable() {
   const [opened, { open, close }] = useDisclosure(false);
+  const [openedQuestion, questionOptions] = useDisclosure(false);
   const [selectedUser, setSelectedUser] = useState<User | undefined>();
   const [loading, setLoading] = useState(true);
   const deleteUser = useDeleteUser();
@@ -20,6 +26,7 @@ export default function UserTable() {
   const users = useUsers();
 
   useEffect(() => {
+    setLoading(true);
     getUsers()
       .catch(() =>
         notifications.show({
@@ -50,9 +57,13 @@ export default function UserTable() {
   };
 
   const handleEditUser = (user: User) => {
-    console.log('user', user);
     setSelectedUser(user);
     open();
+  };
+
+  const handleToggleQuestion = (user: User) => {
+    setSelectedUser(user);
+    questionOptions.open();
   };
 
   return (
@@ -121,11 +132,27 @@ export default function UserTable() {
                   stroke={1.5}
                 />
               </ActionIcon>
+              <ActionIcon
+                color="blue"
+                variant="filled"
+                aria-label="Settings"
+                onClick={() => handleToggleQuestion(user)}
+              >
+                <IconQuestionMark
+                  style={{ width: '70%', height: '70%' }}
+                  stroke={1.5}
+                />
+              </ActionIcon>
             </Group>,
           ])}
         />
       )}
       <UserModal opened={opened} close={close} user={selectedUser} />
+      <QuestionModal
+        opened={openedQuestion}
+        close={questionOptions.close}
+        userId={selectedUser?.id ?? ''}
+      />
     </>
   );
 }

@@ -13,3 +13,27 @@ export const USER_SEX = [
   { value: 'MAS', label: 'Masculino', color: 'blue' },
   { value: 'FEM', label: 'Feminino', color: 'pink' },
 ];
+
+export const WHY_GO_TO_GYM = [
+  { value: 'LEARN_SWIM', label: 'Aprender a nadar' },
+  { value: 'BRONCHITIS', label: 'Bronquite' },
+  { value: 'SPINE', label: 'Problema na coluna' },
+  { value: 'OBESITY', label: 'Obesidade' },
+  { value: 'PRATICE', label: 'Praticar exercício' },
+  { value: 'SHAPE', label: 'Entrar em forma' },
+  { value: 'PREGNANT', label: 'Grávida' },
+  { value: 'MEDICAL_ADVICE', label: 'Conselho médico' },
+  { value: 'ANOTHER', label: 'Outro' },
+];
+
+export const HOW_FIND_ACADEMY = [
+  { value: 'NEWSPAPER', label: 'Jornal' },
+  { value: 'SIGN', label: 'Letreiro' },
+  { value: 'POSTER', label: 'Poster' },
+  { value: 'FLYER', label: 'Folheto' },
+  { value: 'FRIENDS', label: 'Indicação de amigos' },
+  { value: 'OUTDOOR', label: 'Local' },
+  { value: 'INTERNET', label: 'Internet' },
+  { value: 'PHYSICALLY', label: 'Fisicamente' },
+  { value: 'ANOTHER', label: 'Outro' },
+];

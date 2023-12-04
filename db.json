@@ -5,7 +5,7 @@
       "type": "EMPLOYEE",
       "fullname": "João Silva",
       "birth": "1990-05-15",
-      "sex": "M",
+      "sex": "MAS",
       "status": "ACTIVE",
       "phone": "(00) 1234-5678",
       "email": "joao@example.com",
@@ -20,7 +20,7 @@
       "type": "EMPLOYEE",
       "fullname": "Maria Souza",
       "birth": "1985-10-20",
-      "sex": "F",
+      "sex": "FEM",
       "status": "INACTIVE",
       "phone": "(00) 9876-5432",
       "email": "maria@example.com",
@@ -44,6 +44,78 @@
       "cep": "89995-000",
       "street": "Rua Henrique de Carvalho",
       "number": "20"
+    }
+  ],
+  "questions": [
+    {
+      "id": "8127f64e-e8a9-4126-8437-a7b9b2d4112a",
+      "hasHealthPlan": "",
+      "healPlan": null,
+      "praticeSports": "",
+      "whyGoToGym": [
+        "LEARN_SWIM",
+        "BRONCHITIS",
+        "SPINE"
+      ],
+      "whyGoToGymAnother": "",
+      "howToFindAcademy": "NEWSPAPER",
+      "howToFindAcademyAnother": "",
+      "userOfAnotherGym": ""
+    },
+    {
+      "id": "15252f77-ef20-415e-8e85-abd9aa497b96",
+      "hasHealthPlan": "yes",
+      "healPlan": null,
+      "praticeSports": "yes",
+      "whyGoToGym": [],
+      "whyGoToGymAnother": "",
+      "howToFindAcademy": "",
+      "howToFindAcademyAnother": "",
+      "userOfAnotherGym": "yes"
+    },
+    {
+      "id": "1a13aed0-0d26-424c-9d95-4be87edfad52",
+      "hasHealthPlan": false,
+      "healPlan": null,
+      "praticeSports": false,
+      "whyGoToGym": [],
+      "whyGoToGymAnother": "",
+      "howToFindAcademy": "",
+      "howToFindAcademyAnother": "",
+      "userOfAnotherGym": ""
+    },
+    {
+      "hasHealthPlan": null,
+      "healPlan": null,
+      "howToFindAcademy": null,
+      "howToFindAcademyAnother": null,
+      "praticeSports": null,
+      "userOfAnotherGym": null,
+      "whyGoToGym": [],
+      "whyGoToGymAnother": null,
+      "id": "bfbbdac9-0cbe-434d-8656-25252dcf3048"
+    },
+    {
+      "hasHealthPlan": null,
+      "healPlan": null,
+      "howToFindAcademy": null,
+      "howToFindAcademyAnother": null,
+      "praticeSports": null,
+      "userOfAnotherGym": null,
+      "whyGoToGym": [],
+      "whyGoToGymAnother": null,
+      "id": "8503f32c-4461-4fc3-a531-e2587cd39d6f"
+    },
+    {
+      "id": "b59cd59d-55f9-4045-8b62-403446aea2c0",
+      "hasHealthPlan": false,
+      "healPlan": null,
+      "praticeSports": "",
+      "whyGoToGym": [],
+      "whyGoToGymAnother": "",
+      "howToFindAcademy": "",
+      "howToFindAcademyAnother": "",
+      "userOfAnotherGym": ""
     }
   ]
 }

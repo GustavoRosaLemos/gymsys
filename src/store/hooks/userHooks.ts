@@ -7,6 +7,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { useCallback } from 'react';
 import { User } from '@/type/user';
+import { requestDeleteQuestion, requestPostQuestion } from '@/service/question';
 import * as userActions from '../users/userAction';
 import { RootState } from '..';
 
@@ -25,10 +26,26 @@ export const useGetUsers = () => {
 };
 
 export const usePostUser = () =>
-  useCallback(async (user: User) => requestPostUser(user), []);
+  useCallback(async (user: User) => {
+    await requestPostUser(user);
+    await requestPostQuestion({
+      hasHealthPlan: null,
+      healPlan: null,
+      howToFindAcademy: null,
+      howToFindAcademyAnother: null,
+      praticeSports: null,
+      userOfAnotherGym: null,
+      whyGoToGym: [],
+      whyGoToGymAnother: null,
+      id: user.id,
+    });
+  }, []);
 
 export const useDeleteUser = () =>
-  useCallback(async (id: string) => requestDeleteUser(id), []);
+  useCallback(async (id: string) => {
+    await requestDeleteUser(id);
+    await requestDeleteQuestion(id);
+  }, []);
 
 export const usePutUser = () =>
   useCallback(async (user: User) => requestPutUser(user), []);
