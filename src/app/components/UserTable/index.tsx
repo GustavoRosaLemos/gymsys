@@ -13,7 +13,7 @@ import UserModal from '../UserModal';
 
 export default function UserTable() {
   const [opened, { open, close }] = useDisclosure(false);
-  const [userData, setUserData] = useState<User | undefined>(undefined);
+  const [selectedUser, setSelectedUser] = useState<User | undefined>();
   const [loading, setLoading] = useState(true);
   const deleteUser = useDeleteUser();
   const getUsers = useGetUsers();
@@ -49,9 +49,9 @@ export default function UserTable() {
       .finally(() => setLoading(false));
   };
 
-  const handleEditUser = (u: User) => {
-    console.log('u', u);
-    setUserData(u);
+  const handleEditUser = (user: User) => {
+    console.log('user', user);
+    setSelectedUser(user);
     open();
   };
 
@@ -125,7 +125,7 @@ export default function UserTable() {
           ])}
         />
       )}
-      <UserModal user={userData} opened={opened} close={close} />
+      <UserModal opened={opened} close={close} user={selectedUser} />
     </>
   );
 }

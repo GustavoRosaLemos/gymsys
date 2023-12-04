@@ -2,6 +2,7 @@ import {
   requestDeleteUser,
   requestGetUsers,
   requestPostUser,
+  requestPutUser,
 } from '@/service/user';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCallback } from 'react';
@@ -28,3 +29,19 @@ export const usePostUser = () =>
 
 export const useDeleteUser = () =>
   useCallback(async (id: string) => requestDeleteUser(id), []);
+
+export const usePutUser = () =>
+  useCallback(async (user: User) => requestPutUser(user), []);
+
+export const useUserData = () => useUserState().userData;
+
+export const useGetUserData = () => {
+  const dispatch = useDispatch();
+
+  return useCallback(
+    (userData: User) => {
+      dispatch(userActions.getUserData(userData));
+    },
+    [dispatch]
+  );
+};

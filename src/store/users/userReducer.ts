@@ -3,13 +3,15 @@ import * as userActions from './userAction';
 
 interface State {
   users?: User[];
+  userData?: User;
 }
 
 const INITIAL_STATE: State = {
   users: undefined,
+  userData: undefined,
 };
 
-export type Actions = userActions.GetUsers;
+export type Actions = userActions.GetUsers | userActions.GetUserData;
 
 // eslint-disable-next-line default-param-last
 export const userReducer = (state = INITIAL_STATE, action: Actions) => {
@@ -21,7 +23,13 @@ export const userReducer = (state = INITIAL_STATE, action: Actions) => {
         users,
       };
     }
-
+    case userActions.GET_USER_DATA: {
+      const { userData } = action.payload;
+      return {
+        ...state,
+        userData,
+      };
+    }
     default:
       return state;
   }

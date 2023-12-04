@@ -1,5 +1,6 @@
 'use client';
 
+import InitialScale from '@/animations/InitialScale';
 import {
   Button,
   ButtonProps as MantineButtonProps,
@@ -18,10 +19,10 @@ interface ActionsBarProps {
 export default function ActionsBar({ buttons }: ActionsBarProps) {
   return (
     <Group p={20} justify="end">
-      {buttons.map((props) => (
-        <Button key={props.text} {...props}>
-          {props.text}
-        </Button>
+      {buttons.map((props, index) => (
+        <InitialScale delay={0.1 * index} key={props.text}>
+          <Button {...props}>{props.text}</Button>
+        </InitialScale>
       ))}
     </Group>
   );

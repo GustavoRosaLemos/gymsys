@@ -2,7 +2,7 @@
   "users": [
     {
       "id": "15252f77-ef20-415e-8e85-abd9aa497b96",
-      "type": "CUSTOMER",
+      "type": "EMPLOYEE",
       "fullname": "João Silva",
       "birth": "1990-05-15",
       "sex": "M",

@@ -9,3 +9,12 @@ export const requestPostUser = async (user: User) =>
 
 export const requestDeleteUser = async (id: string) =>
   requestService(`http://localhost:4000/users/${id}`, {}, {}, false, 'DELETE');
+
+export const requestPutUser = async (user: User) =>
+  requestService(
+    `http://localhost:4000/users/${user.id}`,
+    user,
+    {},
+    false,
+    'PUT'
+  );

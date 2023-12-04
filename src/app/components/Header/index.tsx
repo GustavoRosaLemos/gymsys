@@ -1,5 +1,6 @@
 'use client';
 
+import InitialScale from '@/animations/InitialScale';
 import { Button, Flex, Group, Paper, Text } from '@mantine/core';
 import {
   IconActivity,
@@ -12,46 +13,54 @@ import { useRouter } from 'next/navigation';
 export default function Header() {
   const router = useRouter();
   return (
-    <Paper shadow="xl" p="sm">
-      <Flex align="center" h={80}>
-        <Group gap="xl" h="100%">
-          <Text
-            fw="bold"
-            size="40px"
-            c="font-weak"
-            style={{ cursor: 'pointer' }}
-            onClick={() => router.push('/')}
-          >
-            GYM
-            <IconGymnastics size={40} />
-            YS
-          </Text>
-          <Group>
-            <Button
+    <Paper shadow="xl" p="sm" style={{ zIndex: '1' }} h="10vh">
+      <Flex align="center" h="100%">
+        <Group gap="xl" h="100%" w="100vw">
+          <InitialScale>
+            <Text
+              fw="bold"
+              size="40px"
               c="font-weak"
-              leftSection={<IconUser size={14} />}
-              variant="default"
-              size="md"
-              onClick={() => router.push('/users')}
+              style={{ cursor: 'pointer' }}
+              onClick={() => router.push('/')}
             >
-              Usuários
-            </Button>
-            <Button
-              c="font-weak"
-              leftSection={<IconActivity size={14} />}
-              variant="default"
-              size="md"
-            >
-              Atividades
-            </Button>
-            <Button
-              c="font-weak"
-              leftSection={<IconShoppingBag size={14} />}
-              variant="default"
-              size="md"
-            >
-              Loja
-            </Button>
+              GYM
+              <IconGymnastics size={40} />
+              YS
+            </Text>
+          </InitialScale>
+          <Group gap="xl">
+            <InitialScale delay={0.1}>
+              <Button
+                c="font-weak"
+                leftSection={<IconUser size={14} />}
+                variant="default"
+                size="md"
+                onClick={() => router.push('/users')}
+              >
+                Usuários
+              </Button>
+            </InitialScale>
+            <InitialScale delay={0.2}>
+              <Button
+                c="font-weak"
+                leftSection={<IconActivity size={14} />}
+                variant="default"
+                size="md"
+              >
+                Atividades
+              </Button>
+            </InitialScale>
+            <InitialScale delay={0.3}>
+              <Button
+                c="font-weak"
+                leftSection={<IconShoppingBag size={14} />}
+                variant="default"
+                size="md"
+              >
+                Loja
+              </Button>
+            </InitialScale>
           </Group>
         </Group>
       </Flex>

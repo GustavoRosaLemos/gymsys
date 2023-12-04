@@ -13,8 +13,8 @@ import {
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { USER_SEX, USER_TYPE } from '@/constant';
-import { useGetUsers, usePostUser } from '@/store/hooks/userHooks';
-import { useState } from 'react';
+import { useGetUsers, usePostUser, usePutUser } from '@/store/hooks/userHooks';
+import { useEffect, useState } from 'react';
 import { notifications } from '@mantine/notifications';
 
 interface UserModalProps {
@@ -26,10 +26,11 @@ interface UserModalProps {
 
 function UserModal({ user, opened, close }: UserModalProps) {
   const [loading, setLoading] = useState(false);
+  const putUser = usePutUser();
   const postUser = usePostUser();
   const getUsers = useGetUsers();
   const form = useForm({
-    initialValues: user || {
+    initialValues: {
       id: uuidv4(),
       type: '',
       fullname: '',
@@ -80,6 +81,24 @@ function UserModal({ user, opened, close }: UserModalProps) {
           })
         )
         .finally(() => setLoading(false));
+    } else {
+      setLoading(true);
+      putUser(v)
+        .then(() => {
+          notifications.show({
+            message: 'Usuário alterado com sucesso!',
+            color: 'green',
+          });
+          handleClose();
+          getUsers();
+        })
+        .catch(() =>
+          notifications.show({
+            message: 'Falha ao editar usuário',
+            color: 'red',
+          })
+        )
+        .finally(() => setLoading(false));
     }
   };
 
@@ -87,6 +106,12 @@ function UserModal({ user, opened, close }: UserModalProps) {
     reset();
     close();
   };
+
+  useEffect(() => {
+    if (user) {
+      Object.entries(user).forEach((u) => setFieldValue(u[0], u[1]));
+    }
+  }, [user, setFieldValue]);
 
   return (
     <>
@@ -167,7 +192,7 @@ function UserModal({ user, opened, close }: UserModalProps) {
                 Voltar
               </Button>
               <Button color="green" type="submit">
-                {user ? 'Salvar' : 'Criar'}
+                Salvar
               </Button>
             </Group>
           </Stack>

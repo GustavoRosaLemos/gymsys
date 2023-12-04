@@ -1,6 +1,7 @@
 import { User } from '@/type/user';
 
 export const GET_USERS = 'GET_USERS';
+export const GET_USER_DATA = 'GET_USER_DATA';
 
 export const getUsers = (users: User[]) => ({
   type: GET_USERS,
@@ -13,5 +14,19 @@ export interface GetUsers {
   type: typeof GET_USERS;
   payload: {
     users: User[];
+  };
+}
+
+export const getUserData = (userData: User) => ({
+  type: GET_USER_DATA,
+  payload: {
+    userData,
+  },
+});
+
+export interface GetUserData {
+  type: typeof GET_USER_DATA;
+  payload: {
+    userData: User;
   };
 }

@@ -3,6 +3,7 @@
 import { Container } from '@mantine/core';
 import { IconPlus } from '@tabler/icons-react';
 import { useDisclosure } from '@mantine/hooks';
+import InitialScale from '@/animations/InitialScale';
 import Header from '../components/Header';
 import ActionsBar from '../components/ActionsBar';
 import UserTable from '../components/UserTable';
@@ -24,7 +25,9 @@ export default function Users() {
           },
         ]}
       />
-      <UserTable />
+      <InitialScale delay={0.1}>
+        <UserTable />
+      </InitialScale>
       <UserModal opened={opened} close={close} />
     </Container>
   );
