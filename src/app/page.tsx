@@ -1,7 +1,10 @@
-import Header from '@/app/components/Header'
+import Header from '@/app/components/Header';
+import { Container } from '@mantine/core';
 
 export default function Home() {
   return (
-    <Header />
-  )
+    <Container fluid p={0}>
+      <Header />
+    </Container>
+  );
 }
