@@ -37,3 +37,12 @@ export const HOW_FIND_ACADEMY = [
   { value: 'PHYSICALLY', label: 'Fisicamente' },
   { value: 'ANOTHER', label: 'Outro' },
 ];
+
+export const LOCATIONS = [
+  { value: 'SALA_DE_LUTA', label: 'Sala de luta' },
+  { value: 'RINGUE_1', label: 'Ringue 1' },
+  { value: 'RINGUE_2', label: 'Ringue 2' },
+  { value: 'SALA_DE_TREINO', label: 'Sala de treino' },
+  { value: 'TATAME_1', label: 'Tatame 1' },
+  { value: 'TATAME_2', label: 'Tatame 2' },
+];

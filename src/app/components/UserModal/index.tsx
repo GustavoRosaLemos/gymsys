@@ -29,6 +29,7 @@ function UserModal({ user, opened, close }: UserModalProps) {
   const putUser = usePutUser();
   const postUser = usePostUser();
   const getUsers = useGetUsers();
+
   const form = useForm({
     initialValues: {
       id: uuidv4(),
@@ -48,16 +49,6 @@ function UserModal({ user, opened, close }: UserModalProps) {
     validate: (values) => ({
       type: values.type ? undefined : 'Campo obrigatório.',
       fullname: values.fullname ? undefined : 'Campo obrigatório.',
-      birth: values.birth ? undefined : 'Campo obrigatório.',
-      sex: values.sex ? undefined : 'Campo obrigatório.',
-      status: values.status ? undefined : 'Campo obrigatório.',
-      phone: values.phone ? undefined : 'Campo obrigatório.',
-      email: values.email ? undefined : 'Campo obrigatório.',
-      city: values.city ? undefined : 'Campo obrigatório.',
-      state: values.state ? undefined : 'Campo obrigatório.',
-      cep: values.cep ? undefined : 'Campo obrigatório.',
-      street: values.street ? undefined : 'Campo obrigatório.',
-      number: values.number ? undefined : 'Campo obrigatório.',
     }),
   });
   const { getInputProps, onSubmit, reset, values, setFieldValue } = form;
@@ -71,6 +62,7 @@ function UserModal({ user, opened, close }: UserModalProps) {
             message: 'Usuário criado com sucesso!',
             color: 'green',
           });
+          reset();
           handleClose();
           getUsers();
         })
@@ -109,8 +101,6 @@ function UserModal({ user, opened, close }: UserModalProps) {
   useEffect(() => {
     if (user) {
       Object.entries(user).forEach((u) => setFieldValue(u[0], u[1]));
-    } else {
-      reset();
     }
   }, [user, setFieldValue, reset]);
 

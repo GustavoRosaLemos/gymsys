@@ -117,5 +117,30 @@
       "howToFindAcademyAnother": "",
       "userOfAnotherGym": ""
     }
+  ],
+  "activities": [
+    {
+      "id": "04cf6a0e-188b-401f-8fce-36113e759422",
+      "name": "Atividade teste",
+      "teacher": "Fulano de Tal",
+      "location": "SALA_DE_LUTA",
+      "start": "2022-01-01",
+      "end": "2024-01-01"
+    },
+    {
+      "id": "d63695b2-41bb-49ef-a5d4-7664c583827c",
+      "name": "Teste",
+      "location": "RINGUE_1",
+      "start": "2023-12-04T03:00:00.000Z",
+      "end": "2023-12-05T03:00:00.000Z",
+      "teacher": "Testando"
+    }
+  ],
+  "registrations": [
+    {
+      "id": "c5e3c85d-6a68-4940-acdf-0fa2b63d2723",
+      "userId": "15252f77-ef20-415e-8e85-abd9aa497b96",
+      "activityId": "04cf6a0e-188b-401f-8fce-36113e759422"
+    }
   ]
 }

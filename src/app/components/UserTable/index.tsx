@@ -6,18 +6,23 @@ import { ActionIcon, Badge, Group, LoadingOverlay } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
 import { USER_STATUS, USER_TYPE } from '@/constant';
 import {
+  IconActivity,
   IconAdjustments,
+  IconListCheck,
   IconQuestionMark,
   IconTrash,
 } from '@tabler/icons-react';
 import { useDisclosure } from '@mantine/hooks';
 import { User } from '@/type/user';
+import { getDateLabel } from '@/utils';
 import Table from '../Table';
 import UserModal from '../UserModal';
 import QuestionModal from '../QuestionModal';
+import RegistrationsModal from '../RegistrationsModal';
 
 export default function UserTable() {
   const [opened, { open, close }] = useDisclosure(false);
+  const [openedRegistrations, registrationsOptions] = useDisclosure(false);
   const [openedQuestion, questionOptions] = useDisclosure(false);
   const [selectedUser, setSelectedUser] = useState<User | undefined>();
   const [loading, setLoading] = useState(true);
@@ -66,6 +71,11 @@ export default function UserTable() {
     questionOptions.open();
   };
 
+  const handleToggleRegistrations = (user: User) => {
+    setSelectedUser(user);
+    registrationsOptions.open();
+  };
+
   return (
     <>
       <LoadingOverlay visible={loading} zIndex={1000} />
@@ -96,7 +106,7 @@ export default function UserTable() {
             user.fullname,
             user.email,
             user.phone,
-            user.birth,
+            getDateLabel(user.birth),
             user.sex,
             user.number,
             user.street,
@@ -143,6 +153,17 @@ export default function UserTable() {
                   stroke={1.5}
                 />
               </ActionIcon>
+              <ActionIcon
+                color="blue"
+                variant="filled"
+                aria-label="Settings"
+                onClick={() => handleToggleRegistrations(user)}
+              >
+                <IconListCheck
+                  style={{ width: '70%', height: '70%' }}
+                  stroke={1.5}
+                />
+              </ActionIcon>
             </Group>,
           ])}
         />
@@ -151,6 +172,11 @@ export default function UserTable() {
       <QuestionModal
         opened={openedQuestion}
         close={questionOptions.close}
+        userId={selectedUser?.id ?? ''}
+      />
+      <RegistrationsModal
+        opened={openedRegistrations}
+        close={registrationsOptions.close}
         userId={selectedUser?.id ?? ''}
       />
     </>

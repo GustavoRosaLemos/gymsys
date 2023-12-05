@@ -8,6 +8,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useCallback } from 'react';
 import { User } from '@/type/user';
 import { requestDeleteQuestion, requestPostQuestion } from '@/service/question';
+import {
+  requestDeleteUserRegistration,
+  requestGetUserRegistrations,
+} from '@/service/registration';
 import * as userActions from '../users/userAction';
 import { RootState } from '..';
 
@@ -62,3 +66,22 @@ export const useGetUserData = () => {
     [dispatch]
   );
 };
+
+export const useUserRegistrations = () => useUserState().registrations;
+
+export const useGetUserRegistrations = () => {
+  const dispatch = useDispatch();
+  return useCallback(
+    async (userId: string) => {
+      const registrations = await requestGetUserRegistrations(userId);
+      dispatch(userActions.getRegistrations(registrations));
+    },
+    [dispatch]
+  );
+};
+
+export const useRemoveUserRegistration = () =>
+  useCallback(
+    async (activityId: string) => requestDeleteUserRegistration(activityId),
+    []
+  );

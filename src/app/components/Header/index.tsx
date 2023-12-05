@@ -47,6 +47,7 @@ export default function Header() {
                 leftSection={<IconActivity size={14} />}
                 variant="default"
                 size="md"
+                onClick={() => router.push('/activities')}
               >
                 Atividades
               </Button>

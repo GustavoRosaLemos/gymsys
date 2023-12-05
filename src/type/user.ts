@@ -29,3 +29,9 @@ export interface User {
   street: string;
   number: string;
 }
+
+export interface UserRegistration {
+  id?: string;
+  activityId: string;
+  userId: string;
+}

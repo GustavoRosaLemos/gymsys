@@ -1,17 +1,22 @@
-import { User } from '@/type/user';
+import { User, UserRegistration } from '@/type/user';
 import * as userActions from './userAction';
 
 interface State {
   users?: User[];
   userData?: User;
+  registrations?: UserRegistration[];
 }
 
 const INITIAL_STATE: State = {
   users: undefined,
   userData: undefined,
+  registrations: undefined,
 };
 
-export type Actions = userActions.GetUsers | userActions.GetUserData;
+export type Actions =
+  | userActions.GetUsers
+  | userActions.GetUserData
+  | userActions.GetRegistrations;
 
 // eslint-disable-next-line default-param-last
 export const userReducer = (state = INITIAL_STATE, action: Actions) => {
@@ -28,6 +33,13 @@ export const userReducer = (state = INITIAL_STATE, action: Actions) => {
       return {
         ...state,
         userData,
+      };
+    }
+    case userActions.GET_REGISTRATIONS: {
+      const { registrations } = action.payload;
+      return {
+        ...state,
+        registrations,
       };
     }
     default:
