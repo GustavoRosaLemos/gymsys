@@ -62,16 +62,19 @@ function ActivitiesTable() {
   };
 
   const handleEditActivity = (activity: Activity) => {
+    setSelectedActivity(undefined);
     setSelectedActivity(activity);
     open();
   };
 
   const handleShowActivityUsers = (activity: Activity) => {
+    setSelectedActivity(undefined);
     setSelectedActivity(activity);
     usersModalOptions.open();
   };
 
   const handleRegistryUser = (activity: Activity) => {
+    setSelectedActivity(undefined);
     setSelectedActivity(activity);
     userRegistrationModalOptions.open();
   };

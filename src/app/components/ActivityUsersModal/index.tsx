@@ -80,7 +80,7 @@ function ActivityUsersModal({
             color: 'green',
           });
           setUsers([]);
-          getActivityRegistrations(userId);
+          getActivityRegistrations(activityId);
         })
         .catch(() =>
           notifications.show({

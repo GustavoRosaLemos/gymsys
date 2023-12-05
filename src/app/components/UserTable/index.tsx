@@ -62,16 +62,19 @@ export default function UserTable() {
   };
 
   const handleEditUser = (user: User) => {
+    setSelectedUser(undefined);
     setSelectedUser(user);
     open();
   };
 
   const handleToggleQuestion = (user: User) => {
+    setSelectedUser(undefined);
     setSelectedUser(user);
     questionOptions.open();
   };
 
   const handleToggleRegistrations = (user: User) => {
+    setSelectedUser(undefined);
     setSelectedUser(user);
     registrationsOptions.open();
   };
