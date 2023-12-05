@@ -1,7 +1,7 @@
 import { User } from '@/type/user';
 import { requestService } from '@/utils/requestService';
 
-export const requestGetUser = async (id: string) =>
+export const requestGetUser = async (id: number) =>
   requestService(`http://localhost:4000/users/${id}`, {}, {});
 
 export const requestGetUsers = async () =>

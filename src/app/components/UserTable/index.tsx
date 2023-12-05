@@ -7,6 +7,8 @@ import { notifications } from '@mantine/notifications';
 import { USER_STATUS, USER_TYPE } from '@/constant';
 import {
   IconAdjustments,
+  IconCurrency,
+  IconCurrencyDollar,
   IconListCheck,
   IconQuestionMark,
   IconTrash,
@@ -18,11 +20,13 @@ import Table from '../Table';
 import UserModal from '../UserModal';
 import QuestionModal from '../QuestionModal';
 import RegistrationsModal from '../RegistrationsModal';
+import UserOrdersModal from '../UserOrdersModal';
 
 export default function UserTable() {
   const [opened, { open, close }] = useDisclosure(false);
   const [openedRegistrations, registrationsOptions] = useDisclosure(false);
   const [openedQuestion, questionOptions] = useDisclosure(false);
+  const [openedUserOrders, userOrdersOptions] = useDisclosure(false);
   const [selectedUser, setSelectedUser] = useState<User | undefined>();
   const [loading, setLoading] = useState(true);
   const deleteUser = useDeleteUser();
@@ -76,6 +80,12 @@ export default function UserTable() {
     setSelectedUser(undefined);
     setSelectedUser(user);
     registrationsOptions.open();
+  };
+
+  const handleToggleUserOrders = (user: User) => {
+    setSelectedUser(undefined);
+    setSelectedUser(user);
+    userOrdersOptions.open();
   };
 
   return (
@@ -166,6 +176,17 @@ export default function UserTable() {
                   stroke={1.5}
                 />
               </ActionIcon>
+              <ActionIcon
+                color="blue"
+                variant="filled"
+                aria-label="UserOrders"
+                onClick={() => handleToggleUserOrders(user)}
+              >
+                <IconCurrencyDollar
+                  style={{ width: '70%', height: '70%' }}
+                  stroke={1.5}
+                />
+              </ActionIcon>
             </Group>,
           ])}
         />
@@ -180,6 +201,11 @@ export default function UserTable() {
         opened={openedRegistrations}
         close={registrationsOptions.close}
         userId={selectedUser?.id ?? ''}
+      />
+      <UserOrdersModal
+        userId={Number(selectedUser?.id)}
+        opened={openedUserOrders}
+        close={userOrdersOptions.close}
       />
     </>
   );

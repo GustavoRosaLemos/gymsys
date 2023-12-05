@@ -1,5 +1,6 @@
 import {
   requestDeleteUser,
+  requestGetUser,
   requestGetUsers,
   requestPostUser,
   requestPutUser,
@@ -93,3 +94,17 @@ export const usePostUserRegistration = () =>
       requestPostUserRegistration(registration),
     []
   );
+
+export const useUser = () => useUserState().user;
+
+export const useGetUser = () => {
+  const dispatch = useDispatch();
+
+  return useCallback(
+    async (id: number) => {
+      const user = await requestGetUser(id);
+      dispatch(userActions.getUser(user));
+    },
+    [dispatch]
+  );
+};

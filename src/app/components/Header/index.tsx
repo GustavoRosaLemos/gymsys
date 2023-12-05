@@ -13,7 +13,12 @@ import { useRouter } from 'next/navigation';
 export default function Header() {
   const router = useRouter();
   return (
-    <Paper shadow="xl" p="sm" style={{ zIndex: '1' }} h="10vh">
+    <Paper
+      shadow="xl"
+      p="sm"
+      style={{ zIndex: '1', minHeight: '80px' }}
+      h="10vh"
+    >
       <Flex align="center" h="100%">
         <Group gap="xl" h="100%" w="100vw">
           <InitialScale>

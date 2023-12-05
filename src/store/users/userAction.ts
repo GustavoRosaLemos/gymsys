@@ -1,8 +1,23 @@
 import { User, UserRegistration } from '@/type/user';
 
+export const GET_USER = 'GET_USER';
 export const GET_USERS = 'GET_USERS';
 export const GET_USER_DATA = 'GET_USER_DATA';
 export const GET_REGISTRATIONS = 'GET_REGISTRATIONS';
+
+export const getUser = (user: User) => ({
+  type: GET_USER,
+  payload: {
+    user,
+  },
+});
+
+export interface GetUser {
+  type: typeof GET_USER;
+  payload: {
+    user: User;
+  };
+}
 
 export const getUsers = (users: User[]) => ({
   type: GET_USERS,

@@ -27,7 +27,7 @@ export default function Home() {
             <InitialScale>
               <Text fw="bold" ta="center" size="50px" c="white">
                 GYM
-                <IconGymnastics size={40} />
+                <IconGymnastics size={50} />
                 YS
               </Text>
             </InitialScale>

@@ -1,5 +1,8 @@
-export const getDateLabel = (value: string) => {
+export const getDateLabel = (value?: string) => {
   try {
+    if (!value) {
+      return '';
+    }
     const date = new Date(value);
     return date.toLocaleDateString('pt-BR', {
       year: 'numeric',

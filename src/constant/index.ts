@@ -46,3 +46,24 @@ export const LOCATIONS = [
   { value: 'TATAME_1', label: 'Tatame 1' },
   { value: 'TATAME_2', label: 'Tatame 2' },
 ];
+
+export const ORDER_STATUS = [
+  { value: 'PENDING', label: 'Pendente', color: 'orange' },
+  { value: 'COMPLETED', label: 'Completo', color: 'green' },
+  { value: 'CANCELED', label: 'Cancelado', color: 'red' },
+];
+
+export const PAYMENT_TYPES = [
+  { value: 'MONEY', label: 'Dinheiro' },
+  { value: 'CREDIT', label: 'Crédito' },
+  { value: 'DEBIT', label: 'Débito' },
+  { value: 'PIX', label: 'Pix' },
+  { value: 'CHECK', label: 'Cheque' },
+  { value: 'TICKET', label: 'Boleto' },
+];
+
+export const ORDER_TYPES = [
+  { value: 'PUB', label: 'Bar' },
+  { value: 'SHOP', label: 'Loja' },
+  { value: 'SERVICE', label: 'Serviço' },
+];
