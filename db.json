@@ -34,7 +34,7 @@
   "questions": [
     {
       "id": 1,
-      "hasHealthPlan": "yes",
+      "hasHealthPlan": "",
       "healPlan": "Vivabem",
       "praticeSports": "yes",
       "whyGoToGym": [],
@@ -88,6 +88,20 @@
       "activityId": 1,
       "userId": "1",
       "id": 8
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Produto 1",
+      "description": "Descrição do produto 1",
+      "price": 10.5
+    },
+    {
+      "id": 2,
+      "name": "Produto 2",
+      "description": "Descrição do produto 2",
+      "price": 20
     }
   ]
 }

@@ -58,6 +58,7 @@ export default function Header() {
                 leftSection={<IconShoppingBag size={14} />}
                 variant="default"
                 size="md"
+                onClick={() => router.push('/store')}
               >
                 Loja
               </Button>

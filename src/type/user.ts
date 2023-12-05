@@ -15,7 +15,7 @@ export enum Status {
 }
 
 export interface User {
-  id?: number;
+  id?: string;
   type: string;
   fullname: string;
   birth: string;

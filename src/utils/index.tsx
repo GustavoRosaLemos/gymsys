@@ -26,3 +26,8 @@ export const getDateTimeLabel = (value?: string | null) => {
     return value;
   }
 };
+
+export const getPriceLabel = (value: number) =>
+  new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(
+    value
+  );
