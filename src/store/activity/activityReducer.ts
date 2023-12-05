@@ -1,19 +1,23 @@
 import { Activity } from '@/type/activity';
+import { UserRegistration } from '@/type/user';
 import * as activityActions from './activityAction';
 
 interface State {
   activity?: Activity;
   activities?: Activity[];
+  activityRegistrations?: UserRegistration[];
 }
 
 const INITIAL_STATE: State = {
   activity: undefined,
   activities: undefined,
+  activityRegistrations: undefined,
 };
 
 export type Actions =
   | activityActions.GetActivities
-  | activityActions.GetActivity;
+  | activityActions.GetActivity
+  | activityActions.GetActivityRegistrations;
 
 // eslint-disable-next-line default-param-last
 export const activityReducer = (state = INITIAL_STATE, action: Actions) => {
@@ -30,6 +34,13 @@ export const activityReducer = (state = INITIAL_STATE, action: Actions) => {
       return {
         ...state,
         activity,
+      };
+    }
+    case activityActions.GET_ACTIVITY_REGISTRATIONS: {
+      const { activityRegistrations } = action.payload;
+      return {
+        ...state,
+        activityRegistrations,
       };
     }
     default:

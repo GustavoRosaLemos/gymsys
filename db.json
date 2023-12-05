@@ -138,9 +138,24 @@
   ],
   "registrations": [
     {
-      "id": "c5e3c85d-6a68-4940-acdf-0fa2b63d2723",
-      "userId": "15252f77-ef20-415e-8e85-abd9aa497b96",
-      "activityId": "04cf6a0e-188b-401f-8fce-36113e759422"
+      "id": "288072b4-3192-4481-8288-89b4b108947f",
+      "activityId": "04cf6a0e-188b-401f-8fce-36113e759422",
+      "userId": "8127f64e-e8a9-4126-8437-a7b9b2d4112a"
+    },
+    {
+      "id": "f8ef0658-de18-459e-aa94-8f90402e0ea5",
+      "activityId": "d63695b2-41bb-49ef-a5d4-7664c583827c",
+      "userId": "1a13aed0-0d26-424c-9d95-4be87edfad52"
+    },
+    {
+      "id": "6455d7f8-79f6-410c-bb80-5406abb73aa7",
+      "activityId": "04cf6a0e-188b-401f-8fce-36113e759422",
+      "userId": "15252f77-ef20-415e-8e85-abd9aa497b96"
+    },
+    {
+      "id": "4958998e-dfc5-4197-aa4e-c0f94a04a239",
+      "activityId": "04cf6a0e-188b-401f-8fce-36113e759422",
+      "userId": "15252f77-ef20-415e-8e85-abd9aa497b96"
     }
   ]
 }

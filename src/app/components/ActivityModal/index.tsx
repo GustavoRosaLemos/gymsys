@@ -27,7 +27,6 @@ interface ActivityModalProps {
   opened: boolean;
   close: () => void;
 }
-new Date().toISOString;
 function ActivityModal({
   editMode,
   activity,

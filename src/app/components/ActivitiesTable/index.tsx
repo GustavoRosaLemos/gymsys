@@ -8,16 +8,26 @@ import {
 import { ActionIcon, Group, LoadingOverlay } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
 import { useEffect, useState } from 'react';
-import { IconAdjustments, IconTrash } from '@tabler/icons-react';
+import {
+  IconAdjustments,
+  IconTrash,
+  IconUsers,
+  IconUsersPlus,
+} from '@tabler/icons-react';
 import { getDateTimeLabel } from '@/utils';
 import { Activity } from '@/type/activity';
 import { useDisclosure } from '@mantine/hooks';
 import { LOCATIONS } from '@/constant';
 import Table from '../Table';
 import ActivityModal from '../ActivityModal';
+import ActivityUsersModal from '../ActivityUsersModal';
+import UserActivityRegistrationModal from '../UserActivityRegistrationModal';
 
 function ActivitiesTable() {
   const [opened, { open, close }] = useDisclosure(false);
+  const [openedUsersModal, usersModalOptions] = useDisclosure(false);
+  const [openedUserRegistrationModal, userRegistrationModalOptions] =
+    useDisclosure(false);
   const [loading, setLoading] = useState(false);
   const [selectedActivity, setSelectedActivity] = useState<
     Activity | undefined
@@ -54,6 +64,16 @@ function ActivitiesTable() {
   const handleEditActivity = (activity: Activity) => {
     setSelectedActivity(activity);
     open();
+  };
+
+  const handleShowActivityUsers = (activity: Activity) => {
+    setSelectedActivity(activity);
+    usersModalOptions.open();
+  };
+
+  const handleRegistryUser = (activity: Activity) => {
+    setSelectedActivity(activity);
+    userRegistrationModalOptions.open();
   };
 
   return (
@@ -98,6 +118,28 @@ function ActivitiesTable() {
                   stroke={1.5}
                 />
               </ActionIcon>
+              <ActionIcon
+                color="blue"
+                variant="filled"
+                aria-label="Settings"
+                onClick={() => handleShowActivityUsers(activity)}
+              >
+                <IconUsers
+                  style={{ width: '70%', height: '70%' }}
+                  stroke={1.5}
+                />
+              </ActionIcon>
+              <ActionIcon
+                color="green"
+                variant="filled"
+                aria-label="Settings"
+                onClick={() => handleRegistryUser(activity)}
+              >
+                <IconUsersPlus
+                  style={{ width: '70%', height: '70%' }}
+                  stroke={1.5}
+                />
+              </ActionIcon>
             </Group>,
           ])}
         />
@@ -107,6 +149,16 @@ function ActivitiesTable() {
         close={close}
         activity={selectedActivity}
         editMode
+      />
+      <ActivityUsersModal
+        opened={openedUsersModal}
+        close={usersModalOptions.close}
+        activityId={selectedActivity?.id ?? ''}
+      />
+      <UserActivityRegistrationModal
+        opened={openedUserRegistrationModal}
+        close={userRegistrationModalOptions.close}
+        activityId={selectedActivity?.id ?? ''}
       />
     </>
   );

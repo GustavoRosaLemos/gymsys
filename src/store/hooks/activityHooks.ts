@@ -8,6 +8,7 @@ import {
   requestPutActivity,
 } from '@/service/activity';
 import { Activity } from '@/type/activity';
+import { requestGetActivityRegistrations } from '@/service/registration';
 import * as activityActions from '../activity/activityAction';
 import { RootState } from '..';
 
@@ -48,3 +49,17 @@ export const useRemoveActivity = () =>
 
 export const usePostActivity = () =>
   useCallback(async (activity: Activity) => requestPostActivity(activity), []);
+
+export const useActivityRegistrations = () =>
+  useActivityState().activityRegistrations;
+
+export const useGetActivityRegistrations = () => {
+  const dispatch = useDispatch();
+  return useCallback(
+    async (activityId: string) => {
+      const registrations = await requestGetActivityRegistrations(activityId);
+      dispatch(activityActions.getActivityRegistrations(registrations));
+    },
+    [dispatch]
+  );
+};
