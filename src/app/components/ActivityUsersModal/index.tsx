@@ -1,6 +1,11 @@
+'use client';
+
 import { requestGetUser } from '@/service/user';
 import {
   useActivityRegistrations,
+  useActivityUsers,
+  useAddActivityUser,
+  useClearActivityUsers,
   useGetActivityRegistrations,
 } from '@/store/hooks/activityHooks';
 import { useRemoveUserRegistration } from '@/store/hooks/userHooks';
@@ -16,24 +21,28 @@ import {
 import { notifications } from '@mantine/notifications';
 import { IconTrash } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
+import { Activity } from '@/type/activity';
 import Table from '../Table';
 
 interface ActivityUsersModalProps {
-  activityId: string;
+  // eslint-disable-next-line react/require-default-props
+  activity?: Activity;
   opened: boolean;
   close: () => void;
 }
 
 function ActivityUsersModal({
-  activityId,
+  activity,
   opened,
   close,
 }: ActivityUsersModalProps) {
   const [loading, setLoading] = useState(false);
-  const [users, setUsers] = useState<User[]>([]);
+  const clearActivityUsers = useClearActivityUsers();
+  const addActivityUser = useAddActivityUser();
   const getActivityRegistrations = useGetActivityRegistrations();
-  const activityRegistrations = useActivityRegistrations();
   const removeUserRegistration = useRemoveUserRegistration();
+  const activityRegistrations = useActivityRegistrations();
+  const users = useActivityUsers();
 
   const handleClose = () => {
     close();
@@ -41,8 +50,7 @@ function ActivityUsersModal({
 
   useEffect(() => {
     setLoading(true);
-    setUsers([]);
-    getActivityRegistrations(activityId)
+    getActivityRegistrations(activity?.id ?? '')
       .catch(() =>
         notifications.show({
           message: 'Falha ao buscar por atividades.',
@@ -50,15 +58,16 @@ function ActivityUsersModal({
         })
       )
       .finally(() => setLoading(false));
-  }, [getActivityRegistrations, activityId]);
+  }, [getActivityRegistrations, activity]);
 
   useEffect(() => {
+    clearActivityUsers();
     activityRegistrations?.forEach((registration) => {
       requestGetUser(registration.userId).then((user) => {
-        setUsers((prev) => [...prev, user]);
+        addActivityUser(user);
       });
     });
-  }, [activityRegistrations]);
+  }, [activityRegistrations, addActivityUser, clearActivityUsers]);
 
   const handleRemoveRegistration = (userId: string) => {
     setLoading(true);
@@ -70,7 +79,7 @@ function ActivityUsersModal({
       return;
     }
     const registrationId = activityRegistrations.find(
-      (a) => a.activityId === activityId
+      (a) => a.userId === userId
     )?.id;
     if (registrationId) {
       removeUserRegistration(registrationId)
@@ -79,8 +88,8 @@ function ActivityUsersModal({
             message: 'Registro excluido com sucesso!',
             color: 'green',
           });
-          setUsers([]);
-          getActivityRegistrations(activityId);
+          clearActivityUsers();
+          getActivityRegistrations(activity?.id ?? '');
         })
         .catch(() =>
           notifications.show({
@@ -113,7 +122,9 @@ function ActivityUsersModal({
                 color="red"
                 variant="filled"
                 aria-label="Settings"
-                onClick={() => handleRemoveRegistration(user.id ?? '')}
+                onClick={() =>
+                  handleRemoveRegistration(user.id?.toString() ?? '')
+                }
               >
                 <IconTrash
                   style={{ width: '70%', height: '70%' }}

@@ -1,5 +1,4 @@
 import { User } from '@/type/user';
-import { v4 as uuidv4 } from 'uuid';
 import { DateInput } from '@mantine/dates';
 import {
   Button,
@@ -32,7 +31,7 @@ function UserModal({ user, opened, close }: UserModalProps) {
 
   const form = useForm({
     initialValues: {
-      id: uuidv4(),
+      id: undefined,
       type: '',
       fullname: '',
       birth: '',
@@ -99,6 +98,7 @@ function UserModal({ user, opened, close }: UserModalProps) {
   };
 
   useEffect(() => {
+    reset();
     if (user) {
       Object.entries(user).forEach((u) => setFieldValue(u[0], u[1]));
     }

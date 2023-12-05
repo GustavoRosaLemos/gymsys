@@ -50,7 +50,7 @@ function QuestionModal({ opened, close, userId }: QuestionModalProps) {
     },
   });
 
-  const { onSubmit, getInputProps, values, setFieldValue } = form;
+  const { onSubmit, getInputProps, values, setFieldValue, reset } = form;
 
   const handleClose = () => {
     close();
@@ -104,11 +104,12 @@ function QuestionModal({ opened, close, userId }: QuestionModalProps) {
   }, [getQuestion, userId]);
 
   useEffect(() => {
+    reset();
     if (question) {
       Object.entries(question).forEach((u) => setFieldValue(u[0], u[1]));
     }
     setFieldValue('id', userId);
-  }, [question, setFieldValue, userId]);
+  }, [question, setFieldValue, userId, reset]);
 
   return (
     <>

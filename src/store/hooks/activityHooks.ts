@@ -9,6 +9,7 @@ import {
 } from '@/service/activity';
 import { Activity } from '@/type/activity';
 import { requestGetActivityRegistrations } from '@/service/registration';
+import { User } from '@/type/user';
 import * as activityActions from '../activity/activityAction';
 import { RootState } from '..';
 
@@ -59,6 +60,39 @@ export const useGetActivityRegistrations = () => {
     async (activityId: string) => {
       const registrations = await requestGetActivityRegistrations(activityId);
       dispatch(activityActions.getActivityRegistrations(registrations));
+    },
+    [dispatch]
+  );
+};
+
+export const useSelectedActivity = () => useActivityState().selectedActivity;
+
+export const useSelectAtivity = () => {
+  const dispatch = useDispatch();
+  return useCallback(
+    (activity: Activity) => {
+      dispatch(activityActions.selectActivity(activity));
+    },
+    [dispatch]
+  );
+};
+
+export const useActivityUsers = () => useActivityState().activityUsers;
+
+export const useClearActivityUsers = () => {
+  const dispatch = useDispatch();
+
+  return useCallback(() => {
+    dispatch(activityActions.clearActivityUsers());
+  }, [dispatch]);
+};
+
+export const useAddActivityUser = () => {
+  const dispatch = useDispatch();
+
+  return useCallback(
+    (user: User) => {
+      dispatch(activityActions.addActivityUser(user));
     },
     [dispatch]
   );

@@ -4,7 +4,6 @@ import {
   useUsers,
 } from '@/store/hooks/userHooks';
 import { useForm } from '@mantine/form';
-import { v4 as uuidv4 } from 'uuid';
 import { useEffect, useState } from 'react';
 import {
   Button,
@@ -16,15 +15,19 @@ import {
 } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
 import { UserRegistration } from '@/type/user';
+import {
+  useClearActivityUsers,
+  useGetActivityRegistrations,
+  useSelectedActivity,
+} from '@/store/hooks/activityHooks';
 
 interface UserActivityRegistrationModalProps {
-  activityId: string;
+  // eslint-disable-next-line react/require-default-props
   opened: boolean;
   close: () => void;
 }
 
 function UserActivityRegistrationModal({
-  activityId,
   opened,
   close,
 }: UserActivityRegistrationModalProps) {
@@ -33,12 +36,15 @@ function UserActivityRegistrationModal({
     useState<{ value: string; label: string }[]>();
   const getUsers = useGetUsers();
   const postUserRegistration = usePostUserRegistration();
+  const getActivityRegistrations = useGetActivityRegistrations();
+  const clearActivityUsers = useClearActivityUsers();
   const users = useUsers();
+  const activity = useSelectedActivity();
 
   const form = useForm({
     initialValues: {
-      id: uuidv4(),
-      activityId,
+      id: undefined,
+      activityId: '',
       userId: '',
     },
     validate: (values) => ({
@@ -68,16 +74,16 @@ function UserActivityRegistrationModal({
   useEffect(() => {
     if (users) {
       setUserOptions(
-        users.map((u) => ({ label: u.fullname, value: u.id ?? '' }))
+        users.map((u) => ({ label: u.fullname, value: u.id?.toString() ?? '' }))
       );
     }
   }, [users]);
 
   useEffect(() => {
-    if (activityId) {
-      setFieldValue('activityId', activityId);
+    if (activity) {
+      setFieldValue('activityId', activity?.id ?? '');
     }
-  }, [activityId, setFieldValue]);
+  }, [activity, setFieldValue]);
 
   const handleSubmit = (r: UserRegistration) => {
     setLoading(true);
@@ -87,6 +93,8 @@ function UserActivityRegistrationModal({
           message: 'Usuário registrado com sucesso!',
           color: 'green',
         });
+        clearActivityUsers();
+        getActivityRegistrations(activity?.id ?? '');
         reset();
         handleClose();
       })

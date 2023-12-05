@@ -6,7 +6,6 @@ import { ActionIcon, Badge, Group, LoadingOverlay } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
 import { USER_STATUS, USER_TYPE } from '@/constant';
 import {
-  IconActivity,
   IconAdjustments,
   IconListCheck,
   IconQuestionMark,

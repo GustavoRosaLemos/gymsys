@@ -1,88 +1,47 @@
 {
   "users": [
     {
-      "id": "15252f77-ef20-415e-8e85-abd9aa497b96",
-      "type": "EMPLOYEE",
-      "fullname": "João Silva",
-      "birth": "1990-05-15",
-      "sex": "MAS",
-      "status": "ACTIVE",
-      "phone": "(00) 1234-5678",
-      "email": "joao@example.com",
-      "city": "São Paulo",
-      "state": "SP",
-      "cep": "12345-678",
-      "street": "Rua Principal",
-      "number": "123"
-    },
-    {
-      "id": "1a13aed0-0d26-424c-9d95-4be87edfad52",
-      "type": "EMPLOYEE",
-      "fullname": "Maria Souza",
-      "birth": "1985-10-20",
-      "sex": "FEM",
-      "status": "INACTIVE",
-      "phone": "(00) 9876-5432",
-      "email": "maria@example.com",
-      "city": "Rio de Janeiro",
-      "state": "RJ",
-      "cep": "54321-098",
-      "street": "Avenida Central",
-      "number": "456"
-    },
-    {
-      "id": "8127f64e-e8a9-4126-8437-a7b9b2d4112a",
       "type": "CUSTOMER",
-      "fullname": "Gustavo Lemos",
+      "fullname": "Nome Sobrenome",
       "birth": "2023-11-4",
       "sex": "MAS",
       "status": "ACTIVE",
       "phone": "(47) 7777-7777",
-      "email": "gustavo.lemos@edu.udesc.com",
-      "city": "Cidade",
-      "state": "Estado",
-      "cep": "89995-000",
-      "street": "Rua Henrique de Carvalho",
-      "number": "20"
+      "email": "email@mail.com",
+      "city": "Cidade das Cidades",
+      "state": "Estado dos Estados",
+      "cep": "0000-000",
+      "street": "Rua das Ruas",
+      "number": "14",
+      "id": 1
+    },
+    {
+      "type": "CUSTOMER",
+      "fullname": "Segundo da Silva",
+      "birth": "2023-11-4",
+      "sex": "MAS",
+      "status": "ACTIVE",
+      "phone": "(48) 8888-8888",
+      "email": "segundo@mail.com",
+      "city": "Cidade Segunda",
+      "state": "Estado Segundo",
+      "cep": "2222-2222",
+      "street": "Rua Segunda",
+      "number": "2",
+      "id": 2
     }
   ],
   "questions": [
     {
-      "id": "8127f64e-e8a9-4126-8437-a7b9b2d4112a",
-      "hasHealthPlan": "",
-      "healPlan": null,
-      "praticeSports": "",
-      "whyGoToGym": [
-        "LEARN_SWIM",
-        "BRONCHITIS",
-        "SPINE"
-      ],
-      "whyGoToGymAnother": "",
-      "howToFindAcademy": "NEWSPAPER",
-      "howToFindAcademyAnother": "",
-      "userOfAnotherGym": ""
-    },
-    {
-      "id": "15252f77-ef20-415e-8e85-abd9aa497b96",
+      "id": 1,
       "hasHealthPlan": "yes",
-      "healPlan": null,
+      "healPlan": "Vivabem",
       "praticeSports": "yes",
       "whyGoToGym": [],
-      "whyGoToGymAnother": "",
-      "howToFindAcademy": "",
-      "howToFindAcademyAnother": "",
-      "userOfAnotherGym": "yes"
-    },
-    {
-      "id": "1a13aed0-0d26-424c-9d95-4be87edfad52",
-      "hasHealthPlan": false,
-      "healPlan": null,
-      "praticeSports": false,
-      "whyGoToGym": [],
-      "whyGoToGymAnother": "",
-      "howToFindAcademy": "",
-      "howToFindAcademyAnother": "",
-      "userOfAnotherGym": ""
+      "whyGoToGymAnother": null,
+      "howToFindAcademy": null,
+      "howToFindAcademyAnother": null,
+      "userOfAnotherGym": null
     },
     {
       "hasHealthPlan": null,
@@ -93,64 +52,42 @@
       "userOfAnotherGym": null,
       "whyGoToGym": [],
       "whyGoToGymAnother": null,
-      "id": "bfbbdac9-0cbe-434d-8656-25252dcf3048"
-    },
-    {
-      "hasHealthPlan": null,
-      "healPlan": null,
-      "howToFindAcademy": null,
-      "howToFindAcademyAnother": null,
-      "praticeSports": null,
-      "userOfAnotherGym": null,
-      "whyGoToGym": [],
-      "whyGoToGymAnother": null,
-      "id": "8503f32c-4461-4fc3-a531-e2587cd39d6f"
-    },
-    {
-      "id": "b59cd59d-55f9-4045-8b62-403446aea2c0",
-      "hasHealthPlan": false,
-      "healPlan": null,
-      "praticeSports": "",
-      "whyGoToGym": [],
-      "whyGoToGymAnother": "",
-      "howToFindAcademy": "",
-      "howToFindAcademyAnother": "",
-      "userOfAnotherGym": ""
+      "id": 2
     }
   ],
   "activities": [
     {
-      "id": "04cf6a0e-188b-401f-8fce-36113e759422",
-      "name": "Atividade teste",
-      "teacher": "Fulano de Tal",
+      "id": 1,
+      "name": "Primeira Atividade",
       "location": "SALA_DE_LUTA",
-      "start": "2022-01-01",
-      "end": "2024-01-01"
+      "start": "2023-12-07T03:00:00.000Z",
+      "end": "2023-12-08T03:00:00.000Z",
+      "teacher": "Prof. Primeiro"
     },
     {
-      "id": "d63695b2-41bb-49ef-a5d4-7664c583827c",
-      "name": "Teste",
+      "name": "Segunda Atividade",
       "location": "RINGUE_1",
-      "start": "2023-12-04T03:00:00.000Z",
-      "end": "2023-12-05T03:00:00.000Z",
-      "teacher": "Testando"
+      "start": "2023-12-13T03:00:00.000Z",
+      "end": "2023-12-14T03:00:00.000Z",
+      "teacher": "Prof. Segundo",
+      "id": 2
     }
   ],
   "registrations": [
     {
-      "id": "f8ef0658-de18-459e-aa94-8f90402e0ea5",
-      "activityId": "d63695b2-41bb-49ef-a5d4-7664c583827c",
-      "userId": "1a13aed0-0d26-424c-9d95-4be87edfad52"
+      "activityId": 2,
+      "userId": "2",
+      "id": 4
     },
     {
-      "id": "9c496199-2fbe-4147-936f-906838c6370b",
-      "activityId": "04cf6a0e-188b-401f-8fce-36113e759422",
-      "userId": "15252f77-ef20-415e-8e85-abd9aa497b96"
+      "activityId": 2,
+      "userId": "1",
+      "id": 5
     },
     {
-      "id": "6f81ccb1-1a16-484e-bc9a-8dfcaeb37ff2",
-      "activityId": "04cf6a0e-188b-401f-8fce-36113e759422",
-      "userId": "15252f77-ef20-415e-8e85-abd9aa497b96"
+      "activityId": 1,
+      "userId": "1",
+      "id": 8
     }
   ]
 }

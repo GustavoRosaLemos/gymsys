@@ -5,7 +5,6 @@ import {
   usePutActivity,
 } from '@/store/hooks/activityHooks';
 import { Activity } from '@/type/activity';
-import { v4 as uuidv4 } from 'uuid';
 import { useForm } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
 import { useEffect, useState } from 'react';
@@ -40,7 +39,7 @@ function ActivityModal({
 
   const form = useForm({
     initialValues: {
-      id: uuidv4(),
+      id: undefined,
       name: '',
       location: '',
       start: '',
@@ -100,11 +99,9 @@ function ActivityModal({
   };
 
   useEffect(() => {
+    reset();
     if (activity) {
       Object.entries(activity).forEach((u) => setFieldValue(u[0], u[1]));
-    }
-    if (!editMode) {
-      reset();
     }
   }, [editMode, activity, setFieldValue, reset]);
 

@@ -4,6 +4,7 @@ import {
   useActivities,
   useGetActivities,
   useRemoveActivity,
+  useSelectAtivity,
 } from '@/store/hooks/activityHooks';
 import { ActionIcon, Group, LoadingOverlay } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
@@ -34,6 +35,7 @@ function ActivitiesTable() {
   >();
   const getActivities = useGetActivities();
   const removeActivity = useRemoveActivity();
+  const selectActivity = useSelectAtivity();
   const activities = useActivities();
 
   useEffect(() => {
@@ -74,8 +76,7 @@ function ActivitiesTable() {
   };
 
   const handleRegistryUser = (activity: Activity) => {
-    setSelectedActivity(undefined);
-    setSelectedActivity(activity);
+    selectActivity(activity);
     userRegistrationModalOptions.open();
   };
 
@@ -156,12 +157,11 @@ function ActivitiesTable() {
       <ActivityUsersModal
         opened={openedUsersModal}
         close={usersModalOptions.close}
-        activityId={selectedActivity?.id ?? ''}
+        activity={selectedActivity}
       />
       <UserActivityRegistrationModal
         opened={openedUserRegistrationModal}
         close={userRegistrationModalOptions.close}
-        activityId={selectedActivity?.id ?? ''}
       />
     </>
   );
