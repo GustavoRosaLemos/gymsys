@@ -14,6 +14,7 @@ import {
   requestGetUserRegistrations,
   requestPostUserRegistration,
 } from '@/service/registration';
+import { requestUserDebitOrders } from '@/service/order';
 import * as userActions from '../users/userAction';
 import { RootState } from '..';
 
@@ -108,3 +109,9 @@ export const useGetUser = () => {
     [dispatch]
   );
 };
+
+export const useUserHasDebts = () =>
+  useCallback(async (userId: number) => {
+    const userDebts = await requestUserDebitOrders(userId);
+    return userDebts.length !== 0;
+  }, []);
