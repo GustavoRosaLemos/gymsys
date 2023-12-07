@@ -6,6 +6,7 @@ export const USER_TYPE = [
 export const USER_STATUS = [
   { value: 'ACTIVE', label: 'Ativo', color: 'green' },
   { value: 'INACTIVE', label: 'Inativo', color: 'red' },
+  { value: 'DEFAULER', label: 'Inadimplente', color: 'red' },
   { value: 'SUSPENDED', label: 'Suspenso', color: 'yellow' },
 ];
 
@@ -51,6 +52,7 @@ export const ORDER_STATUS = [
   { value: 'PENDING', label: 'Pendente', color: 'orange' },
   { value: 'COMPLETED', label: 'Completo', color: 'green' },
   { value: 'CANCELED', label: 'Cancelado', color: 'red' },
+  { value: 'DEBT', label: 'Divida', color: 'red' },
 ];
 
 export const PAYMENT_TYPES = [

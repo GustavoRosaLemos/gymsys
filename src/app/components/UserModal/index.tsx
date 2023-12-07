@@ -11,7 +11,7 @@ import {
   TextInput,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { USER_SEX, USER_TYPE } from '@/constant';
+import { USER_SEX, USER_STATUS, USER_TYPE } from '@/constant';
 import { useGetUsers, usePostUser, usePutUser } from '@/store/hooks/userHooks';
 import { useEffect, useState } from 'react';
 import { notifications } from '@mantine/notifications';
@@ -156,6 +156,11 @@ function UserModal({ user, opened, close }: UserModalProps) {
                   <TextInput
                     description="Contato"
                     {...getInputProps('phone')}
+                  />
+                  <Select
+                    description="Status"
+                    data={USER_STATUS}
+                    {...getInputProps('status')}
                   />
                 </Group>
               </Stack>

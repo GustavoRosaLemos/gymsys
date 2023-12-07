@@ -1,4 +1,4 @@
-import { User } from '@/type/user';
+import { PatchUser, User } from '@/type/user';
 import { requestService } from '@/utils/requestService';
 
 export const requestGetUser = async (id: number) =>
@@ -20,4 +20,22 @@ export const requestPutUser = async (user: User) =>
     {},
     false,
     'PUT'
+  );
+
+export const requestPatchUser = async (user: PatchUser) =>
+  requestService(
+    `http://localhost:4000/users/${user.id}`,
+    user,
+    {},
+    false,
+    'PATCH'
+  );
+
+export const requestGetDefaulters = async () =>
+  requestService(
+    `http://localhost:4000/users?status=DEFAULER`,
+    {},
+    {},
+    false,
+    'GET'
   );

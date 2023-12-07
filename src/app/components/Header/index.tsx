@@ -10,7 +10,11 @@ import {
 } from '@tabler/icons-react';
 import { useRouter } from 'next/navigation';
 
-export default function Header() {
+interface HeaderProps {
+  hideButtons?: boolean;
+}
+
+export default function Header({ hideButtons }: HeaderProps) {
   const router = useRouter();
   return (
     <Paper
@@ -34,41 +38,43 @@ export default function Header() {
               YS
             </Text>
           </InitialScale>
-          <Group gap="xl">
-            <InitialScale delay={0.1}>
-              <Button
-                c="font-weak"
-                leftSection={<IconUser size={14} />}
-                variant="default"
-                size="md"
-                onClick={() => router.push('/users')}
-              >
-                Usuários
-              </Button>
-            </InitialScale>
-            <InitialScale delay={0.2}>
-              <Button
-                c="font-weak"
-                leftSection={<IconActivity size={14} />}
-                variant="default"
-                size="md"
-                onClick={() => router.push('/activities')}
-              >
-                Atividades
-              </Button>
-            </InitialScale>
-            <InitialScale delay={0.3}>
-              <Button
-                c="font-weak"
-                leftSection={<IconShoppingBag size={14} />}
-                variant="default"
-                size="md"
-                onClick={() => router.push('/store')}
-              >
-                Loja
-              </Button>
-            </InitialScale>
-          </Group>
+          {!hideButtons && (
+            <Group gap="xl">
+              <InitialScale delay={0.1}>
+                <Button
+                  c="font-weak"
+                  leftSection={<IconUser size={14} />}
+                  variant="default"
+                  size="md"
+                  onClick={() => router.push('/users')}
+                >
+                  Usuários
+                </Button>
+              </InitialScale>
+              <InitialScale delay={0.2}>
+                <Button
+                  c="font-weak"
+                  leftSection={<IconActivity size={14} />}
+                  variant="default"
+                  size="md"
+                  onClick={() => router.push('/activities')}
+                >
+                  Atividades
+                </Button>
+              </InitialScale>
+              <InitialScale delay={0.3}>
+                <Button
+                  c="font-weak"
+                  leftSection={<IconShoppingBag size={14} />}
+                  variant="default"
+                  size="md"
+                  onClick={() => router.push('/store')}
+                >
+                  Loja
+                </Button>
+              </InitialScale>
+            </Group>
+          )}
         </Group>
       </Flex>
     </Paper>

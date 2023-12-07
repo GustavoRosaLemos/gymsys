@@ -30,3 +30,12 @@ export const requestUserOrders = async (userId: number) =>
     false,
     'GET'
   );
+
+export const requestUserDebitOrders = async (userId: number) =>
+  requestService(
+    `http://localhost:4000/orders/?userId=${userId}&status=DEBT`,
+    {},
+    {},
+    false,
+    'GET'
+  );

@@ -5,9 +5,11 @@ import {
   requestGetOrders,
   requestPostOrder,
   requestPutOrder,
+  requestUserDebitOrders,
   requestUserOrders,
 } from '@/service/order';
 import { Order } from '@/type/order';
+import { requestPatchUser } from '@/service/user';
 import { RootState } from '..';
 import * as OrderActions from '../order/orderActions';
 
@@ -47,3 +49,18 @@ export const useGetUserOrders = () => {
     [dispatch]
   );
 };
+
+export const useMarkOrderAsDebt = () =>
+  useCallback(async (order: Order) => {
+    await requestPutOrder({ ...order, status: 'DEBT' });
+    await requestPatchUser({ id: order.userId ?? 0, status: 'DEFAULER' });
+  }, []);
+
+export const useMarkOrderAsDebtDone = () =>
+  useCallback(async (order: Order) => {
+    await requestPutOrder({ ...order, status: 'COMPLETED' });
+    const userDebits = await requestUserDebitOrders(order.userId ?? 0);
+    if (userDebits.length === 0) {
+      await requestPatchUser({ id: order.userId ?? 0, status: 'ACTIVE' });
+    }
+  }, []);

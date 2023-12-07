@@ -1,5 +1,7 @@
 import {
   useGetOrders,
+  useMarkOrderAsDebt,
+  useMarkOrderAsDebtDone,
   useOrders,
   useRemoveOrder,
 } from '@/store/hooks/orderHooks';
@@ -7,9 +9,15 @@ import { notifications } from '@mantine/notifications';
 import { useEffect, useState } from 'react';
 import { ActionIcon, Badge, Group, List, LoadingOverlay } from '@mantine/core';
 import { getPriceLabel } from '@/utils';
-import { IconTrash, IconUser } from '@tabler/icons-react';
+import {
+  IconCoin,
+  IconCoinOff,
+  IconTrash,
+  IconUser,
+} from '@tabler/icons-react';
 import { ORDER_STATUS, ORDER_TYPES, PAYMENT_TYPES } from '@/constant';
 import { useDisclosure } from '@mantine/hooks';
+import { Order } from '@/type/order';
 import Table from '../Table';
 import UserInfoModal from '../UserInfoModal';
 
@@ -19,6 +27,8 @@ function OrderTable() {
   const [selectedUserId, setSelectedUserId] = useState<number | undefined>();
   const getOrders = useGetOrders();
   const removeOrder = useRemoveOrder();
+  const markOrderAsDebt = useMarkOrderAsDebt();
+  const markOrderAsDebtDone = useMarkOrderAsDebtDone();
   const orders = useOrders();
 
   useEffect(() => {
@@ -64,6 +74,28 @@ function OrderTable() {
     setSelectedUserId(undefined);
     setSelectedUserId(userId);
     open();
+  };
+
+  const handleMarkAsDebit = (order: Order) => {
+    setLoading(true);
+    markOrderAsDebt(order).then(() => {
+      notifications.show({
+        message: 'Divida marcada com débito!',
+        color: 'green',
+      });
+      getOrders().finally(() => setLoading(false));
+    });
+  };
+
+  const handleMarkAsDebitDone = (order: Order) => {
+    setLoading(true);
+    markOrderAsDebtDone(order).then(() => {
+      notifications.show({
+        message: 'Divida marcada com paga!',
+        color: 'green',
+      });
+      getOrders().finally(() => setLoading(false));
+    });
   };
 
   return (
@@ -116,6 +148,31 @@ function OrderTable() {
                   stroke={1.5}
                 />
               </ActionIcon>
+              {o.status === 'DEBT' ? (
+                <ActionIcon
+                  color="green"
+                  variant="filled"
+                  aria-label="Settings"
+                  onClick={() => handleMarkAsDebitDone(o)}
+                >
+                  <IconCoin
+                    style={{ width: '70%', height: '70%' }}
+                    stroke={1.5}
+                  />
+                </ActionIcon>
+              ) : (
+                <ActionIcon
+                  color="red"
+                  variant="filled"
+                  aria-label="Settings"
+                  onClick={() => handleMarkAsDebit(o)}
+                >
+                  <IconCoinOff
+                    style={{ width: '70%', height: '70%' }}
+                    stroke={1.5}
+                  />
+                </ActionIcon>
+              )}
               <ActionIcon
                 color="blue"
                 variant="filled"

@@ -1,19 +1,19 @@
 {
   "users": [
     {
+      "id": 1,
       "type": "CUSTOMER",
       "fullname": "Nome Sobrenome",
       "birth": "2023-11-4",
       "sex": "MAS",
-      "status": "ACTIVE",
+      "status": "DEFAULER",
       "phone": "(47) 7777-7777",
       "email": "email@mail.com",
       "city": "Cidade das Cidades",
       "state": "Estado dos Estados",
       "cep": "0000-000",
       "street": "Rua das Ruas",
-      "number": "14",
-      "id": 1
+      "number": "14"
     },
     {
       "type": "CUSTOMER",
@@ -108,7 +108,7 @@
     {
       "id": 1,
       "userId": 1,
-      "status": "PENDING",
+      "status": "DEBT",
       "orderType": "SHOP",
       "discount": 0,
       "fees": 0,
@@ -149,6 +149,44 @@
       "paymentType": "MONEY",
       "userId": "1",
       "id": 2
+    },
+    {
+      "status": "DEBT",
+      "orderType": "PUB",
+      "discount": 0,
+      "fees": 0,
+      "total": 10.5,
+      "items": [
+        {
+          "id": 1,
+          "name": "Produto 1",
+          "description": "Descrição do produto 1",
+          "quantity": 1,
+          "price": 10.5
+        }
+      ],
+      "paymentType": "MONEY",
+      "userId": "1",
+      "id": 3
+    },
+    {
+      "status": "COMPLETED",
+      "orderType": "SERVICE",
+      "discount": 0,
+      "fees": 0,
+      "total": 100,
+      "items": [
+        {
+          "id": 2,
+          "name": "Produto 2",
+          "description": "Descrição do produto 2",
+          "quantity": 5,
+          "price": 20
+        }
+      ],
+      "paymentType": "PIX",
+      "userId": "2",
+      "id": 4
     }
   ]
 }

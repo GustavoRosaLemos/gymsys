@@ -30,6 +30,22 @@ export interface User {
   number: string;
 }
 
+export interface PatchUser {
+  id: number;
+  type?: string;
+  fullname?: string;
+  birth?: string;
+  sex?: string;
+  status?: string;
+  phone?: string;
+  email?: string;
+  city?: string;
+  state?: string;
+  cep?: string;
+  street?: string;
+  number?: string;
+}
+
 export interface UserRegistration {
   id?: string;
   activityId: string;
