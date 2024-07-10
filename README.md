@@ -1,5 +1,7 @@
 ![Preview do sistema](https://github.com/GustavoRosaLemos/gymsys/blob/main/preview_1.png?raw=true)
 ![Preview do sistema](https://github.com/GustavoRosaLemos/gymsys/blob/main/preview_2.png?raw=true)
+![Preview do sistema](https://github.com/GustavoRosaLemos/gymsys/blob/main/preview_3.png?raw=true)
+![Preview do sistema](https://github.com/GustavoRosaLemos/gymsys/blob/main/preview_4.png?raw=true)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
